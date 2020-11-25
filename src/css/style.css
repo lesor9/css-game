@@ -1,0 +1,174 @@
+@font-face {
+    font-family: 'Mark';
+    font-style: normal;
+    font-weight: normal;
+    src: url("../assets/fonts/Mark-Regular.ttf") format("truetype");
+}
+
+.body {
+    font-family: 'Mark';
+    font-style: normal;
+    font-weight: normal;
+    background-color: #08162B;
+    color: white;
+}
+
+.header {
+    padding: 51px 70px 30px 70px;
+}
+
+.header-content {
+    max-width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-logo {
+}
+
+.header-logo_name {
+    margin-left: 10px;
+}
+
+.header-task {
+    font-family: "Mark";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 91px;
+}
+
+.header-task_number {
+}
+
+.burger-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 152px;
+}
+
+.burger-btn {
+    height: 48px;
+    width: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.burger-menu {
+    border-radius: 5px;
+    width: 44px;
+    height: 6px;
+    background: white;
+}
+
+.burger-menu::before,
+.burger-menu::after {
+    content: '';
+    position: absolute;
+    border-radius: 5px;
+    width: 44px;
+    height: 6px;
+    background: white;
+}
+
+.burger-menu::before {
+    transform: translateY(-15px);
+}
+
+.burger-menu::after {
+    transform: translateY(15px);
+}
+
+
+/* Animation */
+.burger-open > .burger-menu {
+}
+
+.burger-open > .burger-menu::before {
+    transform: rotate(45deg) translateY(35px, -35px);
+}
+
+.burger-open > .burger-menu::after {
+    transform: rotate(-45deg) translateY(35px, -35px);
+}
+
+
+
+
+.css_game-content {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1302px;
+    width: 68%;
+    height: 724px;
+}
+.css_game-left_part {
+    width: 47%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.css_game-cards {
+    height: 204px;
+}
+.css_game-css_editor {
+    height: 580px;
+}
+.css_game-css_editor_name {
+    height: 70px;
+    border-radius: 41px 41px 0 0;
+    background-color: #2B3544;
+    text-align: center;
+    line-height: 70px;
+    font-weight: 800;
+    font-size: 30px;
+    user-select: none;
+}
+.css_game-css_editor_block {
+    border-radius: 0 0 41px 41px;
+    background-color: #C4C4C4;
+    height: 450px;
+    width: 100%;
+    border: none;
+    padding: 0;
+}
+
+
+
+.css_game-right_part {
+    width: 47%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.css_game-task_description {
+    height: 204px;
+}
+.css_game-html_editor {
+    height: 580px;
+}
+
+.css_game-html_editor_name {
+    height: 70px;
+    border-radius: 41px 41px 0 0;
+    background-color: #2B3544;
+    text-align: center;
+    line-height: 70px;
+    font-weight: 800;
+    font-size: 30px;
+    user-select: none;
+}
+
+.css_game-html_editor_block {
+    border-radius: 0 0 41px 41px;
+    background-color: #416694;
+    height: 450px;
+    width: 100%;
+    border: none;
+    padding: 0;
+}
