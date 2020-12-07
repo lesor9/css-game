@@ -1,0 +1,76 @@
+/*
+
+Dracula Theme v1.2.0
+
+https://github.com/zenorocha/dracula-theme
+
+Copyright 2015, All rights reserved
+
+Code licensed under the MIT license
+http://zenorocha.mit-license.org
+
+@author Éverton Ribeiro <nuxlli@gmail.com>
+@author Zeno Rocha <hi@zenorocha.com>
+
+*/
+
+.css_game-html_editor_block .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #282a36;
+}
+
+.css_game-html_editor_block .hljs-keyword,
+.css_game-html_editor_block .hljs-selector-tag,
+.css_game-html_editor_block .hljs-literal,
+.css_game-html_editor_block .hljs-section,
+.css_game-html_editor_block .hljs-link {
+  color: #8be9fd;
+}
+
+.css_game-html_editor_block .hljs-function .hljs-keyword {
+  color: #ff79c6;
+}
+
+.css_game-html_editor_block .hljs,
+.css_game-html_editor_block .hljs-subst {
+  color: #f8f8f2;
+}
+
+.css_game-html_editor_block .hljs-string,
+.css_game-html_editor_block .hljs-title,
+.css_game-html_editor_block .hljs-name,
+.css_game-html_editor_block .hljs-type,
+.css_game-html_editor_block .hljs-attribute,
+.css_game-html_editor_block .hljs-symbol,
+.css_game-html_editor_block .hljs-bullet,
+.css_game-html_editor_block .hljs-addition,
+.css_game-html_editor_block .hljs-variable,
+.css_game-html_editor_block .hljs-template-tag,
+.css_game-html_editor_block .hljs-template-variable {
+  color: #f1fa8c;
+}
+
+.css_game-html_editor_block .hljs-comment,
+.css_game-html_editor_block .hljs-quote,
+.css_game-html_editor_block .hljs-deletion,
+.css_game-html_editor_block .hljs-meta {
+  color: #6272a4;
+}
+
+.css_game-html_editor_block .hljs-keyword,
+.css_game-html_editor_block .hljs-selector-tag,
+.css_game-html_editor_block .hljs-literal,
+.css_game-html_editor_block .hljs-title,
+.css_game-html_editor_block .hljs-section,
+.css_game-html_editor_block .hljs-doctag,
+.css_game-html_editor_block .hljs-type,
+.css_game-html_editor_block .hljs-name,
+.css_game-html_editor_block .hljs-strong {
+  font-weight: bold;
+}
+
+.css_game-html_editor_block .hljs-emphasis {
+  font-style: italic;
+}

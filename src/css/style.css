@@ -47,6 +47,7 @@
     justify-content: flex-end;
     align-items: center;
     width: 152px;
+    z-index: 1000;
 }
 
 .burger-btn {
@@ -72,6 +73,7 @@
     width: 44px;
     height: 6px;
     background: white;
+    transition: 0.5s;
 }
 
 .burger-menu::before {
@@ -84,19 +86,57 @@
 
 
 /* Animation */
-.burger-open > .burger-menu {
+.burger-open .burger-menu {
+    background: transparent;
 }
 
-.burger-open > .burger-menu::before {
-    transform: rotate(45deg) translateY(35px, -35px);
+.burger-open .burger-menu::before {
+    transform: rotate(45deg);
 }
 
-.burger-open > .burger-menu::after {
-    transform: rotate(-45deg) translateY(35px, -35px);
+.burger-open .burger-menu::after {
+    transform: rotate(-45deg);
 }
 
+.burger-list {
+    z-index: 800;
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 450px;
+    height: 100%;
+    background-color: black;
+    transition: 1s;
+}
 
+.burger-open .burger-list {
+    right: 0px;
+}
 
+.burger-list__chooser {
+    font-size: 40px;
+    line-height: 51px;
+    padding: 68px 0px 19px 36px;
+}
+
+.burger-list__level {
+    font-size: 30px;
+    line-height: 38px;
+    margin-left: 77px;
+    margin-bottom: 18px;
+    display: block;
+    background: transparent;
+    border: none;
+    color: white;
+}
+
+.burger-list__level_solved {
+    color: #00FF47;
+}
+
+.burger-list__level_solved-with-help {
+    color: #FFB801;
+}
 
 .css_game-content {
     margin: 0 auto;
@@ -131,12 +171,21 @@
 }
 .css_game-css_editor_block {
     border-radius: 0 0 41px 41px;
-    background-color: #C4C4C4;
+    background-color: #f0f0f0;
+    color: #444;
     height: 450px;
     width: 100%;
     border: none;
     padding: 0;
+    font-size: 20px;
 }
+
+.css_game-textarea {
+    border: none;
+    padding: 8px;
+    padding-top: 15px;
+}
+
 
 
 
@@ -166,9 +215,44 @@
 
 .css_game-html_editor_block {
     border-radius: 0 0 41px 41px;
-    background-color: #416694;
+    background-color: #282a36;
     height: 450px;
     width: 100%;
     border: none;
     padding: 0;
+}
+
+.footer {
+    padding: 27px;
+    padding-top: 46px;
+    margin: 0 auto;
+    max-width: 1500px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__year {
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 38px;
+    width: 129px;
+    text-align: right;
+    line-height: 49px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    z-index: 500;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.burger-open .overlay {
+    cursor: pointer;
+    display: block;
 }

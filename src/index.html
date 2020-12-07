@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/default.min.css">
     <title>RS-CSS</title>
 </head>
 <body class="body">
@@ -26,23 +27,54 @@
         </div>
     </header>
 
+    <div class="burger-list">
+        <p class="burger-list__chooser">Choose a level</p>
+        <button class="burger-list__level">Level 1</button>
+        <button class="burger-list__level burger-list__level_solved">Level 2</button>
+        <button class="burger-list__level">Level 3</button>
+        <button class="burger-list__level burger-list__level_solved-with-help">Level 4</button>
+    </div>
+
     <div class="css_game">
         <div class="css_game-content">
             <div class="css_game-left_part">
-                <div class="css_game-cards"></div>
+                <div class="css_game-cards">
+
+                </div>
                 <div class="css_game-css_editor">
                     <div class="css_game-css_editor_name">CSS Editor</div>
-                    <textarea class="css_game-css_editor_block"></textarea> 
+                    <div class="css_game-css_editor_block">
+                        <p contenteditable class="css_game-textarea css"></p> 
+                    </div>
                 </div>
             </div>
             <div class="css_game-right_part">
                 <div class="css_game-task_description"></div>
                 <div class="css_game-html_editor">
                     <div class="css_game-html_editor_name">HTML Editor</div>
-                    <textarea class="css_game-html_editor_block"></textarea>
+                    <pre class="css_game-html_editor_block">
+                        <code class="dracula html">&lt;div&gt;Hiiii&lt;/div&gt;</code>
+                    </pre>
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
+
+    <footer class="footer">
+        <div class="footer__dev">
+            <img src="./assets/images/dev.svg" alt="dev img">
+        </div>
+
+        <div class="footer__school">
+            <img src="./assets/images/school.svg" alt="school img">
+        </div>
+
+        <div class="footer__year">2020</div>
+    </footer>
+
+    <div class="overlay"></div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
