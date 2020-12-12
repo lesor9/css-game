@@ -9,9 +9,9 @@ const levels = [
 
   {
     level: 2,
-    elements: ['dragon', 'castle'],
-    description: 'Task 222222',
-    target: ['castle'],
+    elements: ['princess', 'goblin', 'goblin'],
+    description: 'Save the princess from the goblin by killing them',
+    target: ['goblin'],
     hint: '',
   },
 ];

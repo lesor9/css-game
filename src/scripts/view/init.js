@@ -21,13 +21,13 @@ const initTaskImages = (level) => {
   level.elements.forEach((item) => {
     const img = document.createElement('img');
 
-    img.src = `./assets/images/fairy_tale/png/${item}.png`;
+    img.src = `./assets/images/fairy_tale/${item}.png`;
     img.alt = 'img';
-    img.height = '120';
+    img.style.width = `${80 / level.elements.length}%`;
     img.classList.add('img-card');
     img.setAttribute('data-tag', item);
 
-    if (level.target.indexOf(item) != -1) img.classList.add('target');
+    if (level.target.indexOf(item) !== -1) img.classList.add('target');
 
     imgContent.appendChild(img);
   });
@@ -75,8 +75,13 @@ const initTaskNumHeader = (current, all) => {
 
 const initPseudoCode = (level) => {
   const htmlEdiror = document.querySelector('.css_game-html_editor');
+
+  const oldCode = document.querySelector('fairytale');
+  if (oldCode) oldCode.remove();
+
   const pseudoCode = document.createElement('fairytale');
   pseudoCode.style.display = 'none';
+  pseudoCode.classList.add('pseudoCode');
 
   level.elements.forEach((item) => {
     const elem = document.createElement(item);
@@ -86,19 +91,40 @@ const initPseudoCode = (level) => {
   htmlEdiror.appendChild(pseudoCode);
 };
 
-const onloadView = () => {
-  addOverlay();
-  initBurgerMenu();
+const clearCSS = () => {
+  const cssField = document.querySelector('.css');
+  cssField.innerHTML = 'Type selector here..';
+};
 
-  const lastLevel = localStorage.getItem('lastLevel') || 1;
+const onloadView = (isSolved = false) => {
+  if (!isSolved) {
+    addOverlay();
+    initBurgerMenu();
+  }
+
+  let lastLevel = localStorage.getItem('lastLevel');
+  if (!lastLevel) {
+    lastLevel = 1;
+    localStorage.setItem('lastLevel', 1);
+  }
 
   initTaskNumHeader(lastLevel, levels.length);
   initTaskImages(levels[lastLevel - 1]);
   initDescription(levels[lastLevel - 1]);
   initHTMLCode(levels[lastLevel - 1]);
   initPseudoCode(levels[lastLevel - 1]);
+  clearCSS();
+
+  if (isSolved) {
+      const selectorInputFiled = document.querySelector('.css');
+      selectorInputFiled.innerText = '';
+      selectorInputFiled.focus();
+      const htmlEditor = document.querySelector('.html');
+      hljs.highlightBlock(htmlEditor);
+  }
 };
 
 export {
-  initTaskImages, initDescription, initHTMLCode, onloadView, burgerOnClick, initTaskNumHeader,
+  initTaskImages, initDescription, initHTMLCode, onloadView,
+  burgerOnClick, initTaskNumHeader, initPseudoCode, clearCSS,
 };

@@ -138,6 +138,31 @@
     color: #FFB801;
 }
 
+.css-game-info {
+    display: flex;
+    max-width: 1302px;
+    width: 68%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.css_game-cards {
+    width: 47%;
+    margin-bottom: 41px;
+    height: 163px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.css_game-task_description {
+    width: 47%;
+}
+
 .css_game-content {
     margin: 0 auto;
     display: flex;
@@ -153,17 +178,12 @@
     display: flex;
     flex-direction: column;
 }
-.css_game-cards {
-    margin-bottom: 41px;
-    height: 163px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 .imgContent {
     margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .img-card {
@@ -176,6 +196,7 @@
     height: 1px;
     background: white;
     margin: 0;
+    margin-top: 10px;
 }
 
 .css_game-css_editor {
@@ -213,7 +234,11 @@
 .css_editor__default-text {
     padding-left: 9px;
 }
-  
+
+.css_editor__default-text-text {
+    display: block;
+    padding-left: 30px;
+}
 
 .css_game-right_part {
     width: 47%;
@@ -327,5 +352,67 @@
     100% {
         background-color: transparent;
         border-radius: 10%;
+    }
+}
+
+.card-completed {
+    animation: spin 1s linear;
+}
+
+@keyframes spin {
+    100% {
+        transform:rotate(360deg);
+        width: 0;
+        height: 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .header {
+        padding: 51px 20px 30px 20px;
+    }
+
+    .header-task_number {
+        font-size: 40px;
+    }
+
+    .burger-list {
+        width: 400px;
+    }
+
+    .header-logo_name {
+        display: none;
+    }
+
+    .burger-wrapper {
+        width: 56px;
+    }
+
+    .css-game-info {
+        width: 90%;
+    }
+
+    .css_game-task_description {
+        font-size: 32px;
+    }
+    
+    .img-card {
+        width: 40%;
+    }
+
+    .css_game-content {
+        width: 90%;
+    }
+
+    .css_game-css_editor_name {
+        font-size: 20px;
+    }
+
+    .css_game-html_editor_name {
+        font-size: 20px;
+    }
+
+    .css_game-task_description {
+        font-size: 30px;
     }
 }
