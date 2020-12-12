@@ -1,19 +1,11 @@
-import {
-  initTaskImages, initDescription, initHTMLCode, burgerOnClick,
-  initTaskNumHeader, initPseudoCode, clearCSS,
-} from './init';
-import levels from '../model/levels';
+import { onloadView, burgerOnClick, currentLevelBorder } from './init';
 
 const levelOnClick = (e) => {
   const levelNum = e.target.getAttribute('data-level');
+  currentLevelBorder(Number(localStorage.getItem('lastLevel')));
   localStorage.setItem('lastLevel', levelNum);
 
-  initTaskNumHeader(levelNum, levels.length);
-  initTaskImages(levels[levelNum - 1]);
-  initDescription(levels[levelNum - 1]);
-  initHTMLCode(levels[levelNum - 1]);
-  initPseudoCode(levels[levelNum - 1]);
-  clearCSS();
+  onloadView('burger');
 
   const htmlEditor = document.querySelector('.html');
   hljs.highlightBlock(htmlEditor);

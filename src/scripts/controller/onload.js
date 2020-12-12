@@ -3,9 +3,14 @@ import { makeBorders, onNextLevelAnimation } from '../view/inputSelector';
 import levelOnClick from '../view/updateLevel';
 import checkSelector from './checkSelector';
 import complete from '../view/complete';
-import level from '../model/levels';
+import levels from '../model/levels';
 
 let isMessageShown = false;
+
+const currentLevelBorder = (lvlNum) => {
+  const currentLevel = document.querySelector(`[data-level="${lvlNum}"]`);
+  currentLevel.classList.toggle('burger-list__level-current_task');
+};
 
 const isGameFinished = () => {
   let nonSolved = false;
@@ -40,19 +45,20 @@ const inputSelector = (selector) => {
     levelBtn.classList.add('burger-list__level_solved');
 
     if (isGameFinished() && !isMessageShown) {
-        isMessageShown = true;
-        onNextLevelAnimation();
-        setTimeout(() => {
-            complete();
-        }, 1000);
+      isMessageShown = true;
+      onNextLevelAnimation();
+      setTimeout(() => {
+        complete();
+      }, 1000);
       return;
     }
 
-    if (level.length !== levelNum) {
+    if (levels.length !== levelNum) {
+      currentLevelBorder(Number(localStorage.getItem('lastLevel')));
       localStorage.setItem('lastLevel', levelNum + 1);
       onNextLevelAnimation();
       setTimeout(() => {
-        onloadView(isRightSelector);
+        onloadView('right-selector');
       }, 1000);
       const htmlEditor = document.querySelector('.html');
       hljs.highlightBlock(htmlEditor);

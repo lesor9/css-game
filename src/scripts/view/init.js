@@ -46,19 +46,6 @@ const initDescription = (level) => {
   descField.appendChild(taskText);
 };
 
-const initHTMLCode = (level) => {
-  const htmlEditor = document.querySelector('.html');
-  htmlEditor.innerHTML = '';
-  htmlEditor.innerHTML += '&lt;fairytale&gt;';
-
-  level.elements.forEach((item) => {
-    htmlEditor.innerHTML += `<br>\t&lt;${item}&gt<br>`;
-    htmlEditor.innerHTML += `\t&lt;/${item}&gt<br>`;
-  });
-
-  htmlEditor.innerHTML += '&lt;/fairytale&gt';
-};
-
 const burgerOnClick = () => {
   document.body.classList.toggle('burger-open');
 };
@@ -96,8 +83,76 @@ const clearCSS = () => {
   cssField.innerHTML = 'Type selector here..';
 };
 
-const onloadView = (isSolved = false) => {
-  if (!isSolved) {
+const currentLevelBorder = (lvlNum) => {
+  const currentLevel = document.querySelector(`[data-level="${lvlNum}"]`);
+  currentLevel.classList.toggle('burger-list__level-current_task');
+};
+
+const initHTMLCode = (level) => {
+  const htmlEditor = document.querySelector('.html');
+  htmlEditor.innerHTML = '';
+  htmlEditor.innerText += '<fairytale>';
+
+  level.elements.forEach((item) => {
+    htmlEditor.innerText += `\t<${item}>`;
+    htmlEditor.innerText += `</${item}>`;
+  });
+  htmlEditor.innerText += '</fairytale>';
+};
+
+const findImage = (e) => {
+  const elem = e.target.closest('.htmlElemOver');
+  const htmlCode = document.querySelector('.html').childNodes;
+  let indexOfImage = 0;
+  for (const codeSnippet of htmlCode) {
+    if (codeSnippet.tagName === 'DIV') {
+      if (codeSnippet === elem) {
+        return indexOfImage;
+      }
+      indexOfImage += 1;
+    }
+  }
+
+  return null;
+};
+
+const selectImageFromHTMLElement = (e) => {
+  const imageIndex = findImage(e);
+  const imagesField = document.querySelector('.imgContent').childNodes;
+  const selectedImage = imagesField[imageIndex];
+
+  selectedImage.classList.add('imageSelectedViaHTML');
+};
+
+const unSelect = () => {
+  const imagesField = Array.from(document.querySelector('.imgContent').childNodes);
+  imagesField.forEach((image) => {
+    image.classList.remove('imageSelectedViaHTML');
+  });
+};
+
+const elemsHTMLEditorListeners = () => {
+  const htmlCode = document.querySelector('.html');
+  const htmlTags = document.querySelectorAll('.hljs-tag');
+
+  for (let i = 1; i < htmlTags.length - 1; i += 2) {
+    const div = document.createElement('div');
+
+    div.appendChild(htmlTags[i]);
+    div.appendChild(htmlTags[i + 1]);
+    div.classList.add('htmlElemOver');
+
+    div.addEventListener('mouseover', selectImageFromHTMLElement);
+    div.addEventListener('mouseout', unSelect);
+
+    htmlCode.appendChild(div);
+  }
+
+  htmlCode.appendChild(htmlTags[htmlTags.length - 1]);
+};
+
+const onloadView = (type = false) => {
+  if (!type) {
     addOverlay();
     initBurgerMenu();
   }
@@ -113,18 +168,20 @@ const onloadView = (isSolved = false) => {
   initDescription(levels[lastLevel - 1]);
   initHTMLCode(levels[lastLevel - 1]);
   initPseudoCode(levels[lastLevel - 1]);
+  currentLevelBorder(lastLevel);
   clearCSS();
 
-  if (isSolved) {
-      const selectorInputFiled = document.querySelector('.css');
-      selectorInputFiled.innerText = '';
-      selectorInputFiled.focus();
-      const htmlEditor = document.querySelector('.html');
-      hljs.highlightBlock(htmlEditor);
+  if (type === 'right-selector') {
+    const selectorInputFiled = document.querySelector('.css');
+    selectorInputFiled.innerText = '';
+    selectorInputFiled.focus();
   }
+
+  const htmlEditor = document.querySelector('.html');
+  hljs.highlightBlock(htmlEditor);
+  elemsHTMLEditorListeners();
 };
 
 export {
-  initTaskImages, initDescription, initHTMLCode, onloadView,
-  burgerOnClick, initTaskNumHeader, initPseudoCode, clearCSS,
+  onloadView, burgerOnClick, currentLevelBorder,
 };
