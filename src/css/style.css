@@ -154,8 +154,30 @@
     flex-direction: column;
 }
 .css_game-cards {
-    height: 204px;
+    margin-bottom: 41px;
+    height: 163px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.imgContent {
+    margin-bottom: 15px;
+}
+
+.img-card {
+    margin: 5px;
+    padding: 5px;
+}
+
+.imgUnderline {
+    width: 100%;
+    height: 1px;
+    background: white;
+    margin: 0;
+}
+
 .css_game-css_editor {
     height: 580px;
 }
@@ -180,14 +202,18 @@
     font-size: 20px;
 }
 
+
 .css_game-textarea {
     border: none;
     padding: 8px;
     padding-top: 15px;
+    
 }
 
-
-
+.css_editor__default-text {
+    padding-left: 9px;
+}
+  
 
 .css_game-right_part {
     width: 47%;
@@ -196,8 +222,17 @@
     flex-direction: column;
 }
 .css_game-task_description {
-    height: 204px;
+    margin-bottom: 41px;
+    height: 163px;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 51px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .css_game-html_editor {
     height: 580px;
 }
@@ -255,4 +290,42 @@
 .burger-open .overlay {
     cursor: pointer;
     display: block;
+}
+
+.target {
+    animation: target 1000ms ease infinite;
+}
+
+@keyframes target {
+    0% {
+        transform: scale(1.1, 0.9);
+    }
+    
+    20% {
+        transform: scale(0.85, 1.15);
+    }
+
+    70% {
+        transform: translateY(-0.5vmin);
+    }
+
+    100% {
+        transform: scale(1.1, 0.9);
+    }
+}
+
+.border {
+    animation: border 1000ms ease;
+}
+
+@keyframes border {
+    0% {
+        background-color: seagreen;
+        border-radius: 10%;
+    }
+
+    100% {
+        background-color: transparent;
+        border-radius: 10%;
+    }
 }

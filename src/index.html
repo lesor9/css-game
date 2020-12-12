@@ -15,8 +15,7 @@
             </div>
             
             <div class="header-task">
-                Task
-                <span class="header-task_number">1/10</span>
+                <span class="header-task_number"></span>
             </div>
 
             <div class="burger-wrapper">
@@ -29,10 +28,6 @@
 
     <div class="burger-list">
         <p class="burger-list__chooser">Choose a level</p>
-        <button class="burger-list__level">Level 1</button>
-        <button class="burger-list__level burger-list__level_solved">Level 2</button>
-        <button class="burger-list__level">Level 3</button>
-        <button class="burger-list__level burger-list__level_solved-with-help">Level 4</button>
     </div>
 
     <div class="css_game">
@@ -44,7 +39,14 @@
                 <div class="css_game-css_editor">
                     <div class="css_game-css_editor_name">CSS Editor</div>
                     <div class="css_game-css_editor_block">
-                        <p contenteditable class="css_game-textarea css"></p> 
+                        <p contenteditable class="css_game-textarea css">Type selector here..</p>
+                        <div class="css_editor__default-text">
+                            {
+                            <br>
+                            &emsp;/* Styles would go here. */
+                            <br>    
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -53,7 +55,7 @@
                 <div class="css_game-html_editor">
                     <div class="css_game-html_editor_name">HTML Editor</div>
                     <pre class="css_game-html_editor_block">
-                        <code class="dracula html">&lt;div&gt;Hiiii&lt;/div&gt;</code>
+                        <code class="dracula html"></code>
                     </pre>
                 </div>
             </div>
@@ -62,11 +64,15 @@
 
     <footer class="footer">
         <div class="footer__dev">
-            <img src="./assets/images/dev.svg" alt="dev img">
+            <a href="https://github.com/lesor9">
+                <img src="./assets/images/dev.svg" alt="dev img">
+            </a>
         </div>
 
         <div class="footer__school">
-            <img src="./assets/images/school.svg" alt="school img">
+            <a href="https://rs.school/">
+                <img src="./assets/images/school.svg" alt="school img">
+            </a>
         </div>
 
         <div class="footer__year">2020</div>
