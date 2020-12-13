@@ -38,10 +38,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
         }),
-        // new CleanWebpackPlugin(),
+        new CleanWebpackPlugin(),
     ],
-    watch: true,
-    watchOptions: {
-        ignored: /node_modules/
-    },
+    // watch: true,
+    // watchOptions: {
+    //     ignored: /node_modules/
+    // },
 }
