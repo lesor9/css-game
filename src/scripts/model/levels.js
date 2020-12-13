@@ -6,17 +6,21 @@ const levels = [
     elements: ['dragon', 'wizard', 'castle'],
     description: 'Choose a dragon',
     target: ['dragon'],
-    hint: '',
+    hint: 'dragon',
   },
 
   // class task
   {
     level: 2,
     name: '.class',
-    elements: ['princess', 'goblin', 'goblin'],
+    elements: [
+      'princess',
+      'goblin',
+      'goblin',
+    ],
     description: 'Save the princess from the goblins by killing them',
     target: ['goblin'],
-    hint: '',
+    hint: '123456789',
   },
 
   // id task
@@ -24,9 +28,9 @@ const levels = [
     level: 3,
     name: '#id',
     elements: ['unicorn', 'cyclops', 'king', 'king'],
-    description: 'Third taaask',
+    description: 'Kill cyclop',
     target: ['cyclops', 'king'],
-    hint: '',
+    hint: '123456789',
   },
 ];
 

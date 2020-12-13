@@ -117,14 +117,14 @@
     font-size: 30px;
     line-height: 38px;
     padding-left: 77px;
-    margin-bottom: 18px;
+    /* margin-bottom: 18px; */
     display: block;
     background: transparent;
     border: none;
     color: white;
     text-align: left;
     width: 100%;
-}
+}   
 
 .burger-list__level:hover {
     background-color: rgb(45, 46, 49);
@@ -145,6 +145,22 @@
 
 .burger-list__level-current_task:hover {
     background-color: rgb(26, 29, 77);
+}
+
+.resetButton {
+    font-size: 30px;
+    line-height: 38px;
+    padding-left: 60px;
+    background: transparent;
+    border: none;
+    color: white;
+    text-align: left;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.resetButton:hover {
+    background-color: rgb(148, 48, 148);
 }
 
 .css-game-info {
@@ -214,7 +230,16 @@
     font-weight: 800;
     font-size: 30px;
     user-select: none;
+    position: relative;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+
+.css_game-hint {
+    position: absolute;
+    right: 35px;
+    cursor: pointer;
+}
+
 .css_game-css_editor_block {
     border-radius: 0 0 41px 41px;
     background-color: #f0f0f0;
@@ -269,6 +294,7 @@
     font-weight: 800;
     font-size: 30px;
     user-select: none;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .css_game-html_editor_block {
@@ -313,6 +339,28 @@
 .burger-open .overlay {
     cursor: pointer;
     display: block;
+}
+
+.wrongSelector {
+    animation: wrongAnswer 1s linear;
+}
+
+@keyframes wrongAnswer {
+    10% {
+        transform: translateX(10px) scaleX(0.98);
+    }
+    30% {
+        transform: translateX(-10px) scaleX(0.98);
+    }
+    50% {
+        transform: translateX(10px) scaleX(0.98);
+    }
+    70% {
+        transform: translateX(-10px) scaleX(0.98);
+    }
+    90% {
+        transform: translateX(10px) scaleX(0.98);
+    }
 }
 
 .target {

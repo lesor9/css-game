@@ -1,5 +1,18 @@
 import levels from '../model/levels';
 
+const resetProgress = () => {
+  const levelsBtns = [...document.querySelectorAll('.burger-list__level')];
+  levelsBtns.forEach((level) => {
+    level.classList.remove('burger-list__level_solved');
+    level.classList.remove('burger-list__level_solved-with-help');
+    level.classList.remove('burger-list__level-current_task');
+  });
+
+  localStorage.clear();
+  onloadView('reset');
+  document.body.classList.toggle('burger-open');
+};
+
 const initBurgerMenu = () => {
   const levelList = document.querySelector('.burger-list');
 
@@ -10,6 +23,14 @@ const initBurgerMenu = () => {
     levelBtn.innerHTML = `Level ${item.level}`;
     levelList.appendChild(levelBtn);
   });
+
+  const cleanBtn = document.createElement('button');
+  cleanBtn.innerText = 'Reset progress';
+  cleanBtn.classList.add('resetButton');
+
+  cleanBtn.addEventListener('click', resetProgress);
+
+  levelList.appendChild(cleanBtn);
 };
 
 const initTaskImages = (level) => {
@@ -116,7 +137,11 @@ const findImage = (e) => {
   return null;
 };
 
+const arrayImgToTag = [];
+
 const selectImageFromHTMLElement = (e) => {
+  const currentDiv = e.target.closest('.htmlElemOver');
+
   const imageIndex = findImage(e);
   const imagesField = document.querySelector('.imgContent').childNodes;
   const selectedImage = imagesField[imageIndex];
@@ -151,6 +176,42 @@ const elemsHTMLEditorListeners = () => {
   htmlCode.appendChild(htmlTags[htmlTags.length - 1]);
 };
 
+const levelCompleteWithHint = () => {
+  const levelNum = localStorage.getItem('lastLevel');
+  const levelBtn = document.querySelector(`[data-level="${levelNum}"]`);
+  levelBtn.classList.add('burger-list__level_solved-with-help');
+};
+
+async function asyncForEach(array, callback) {
+  for (let index = 0; index < array.length; index++) {
+    await callback(array[index], index, array);
+  }
+}
+
+let isTyping = false;
+async function textTyping(hint) {
+  if (isTyping) return;
+  isTyping = true;
+  const hintBtn = document.querySelector('.css_game-hint');
+  hintBtn.removeEventListener('click', () => textTyping(hint));
+  hint = hint.split('');
+  const cssField = document.querySelector('.css');
+  cssField.innerText = '';
+
+  await asyncForEach(hint, async (elem) => {
+    cssField.innerText += elem;
+    await new Promise((r) => setTimeout(r, 250));
+  });
+
+  levelCompleteWithHint();
+  isTyping = false;
+}
+
+const initHint = (hint) => {
+  const hintBtn = document.querySelector('.css_game-hint');
+  hintBtn.addEventListener('click', () => textTyping(hint));
+};
+
 const onloadView = (type = false) => {
   if (!type) {
     addOverlay();
@@ -170,6 +231,7 @@ const onloadView = (type = false) => {
   initPseudoCode(levels[lastLevel - 1]);
   currentLevelBorder(lastLevel);
   clearCSS();
+  initHint(levels[lastLevel - 1].hint);
 
   if (type === 'right-selector') {
     const selectorInputFiled = document.querySelector('.css');
