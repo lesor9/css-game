@@ -5,7 +5,6 @@ import checkSelector from './checkSelector';
 import complete from '../view/complete';
 import levels from '../model/levels';
 
-let isMessageShown = false;
 
 const currentLevelBorder = (lvlNum) => {
   const currentLevel = document.querySelector(`[data-level="${lvlNum}"]`);
@@ -44,8 +43,7 @@ const inputSelector = (selector) => {
     const levelBtn = document.querySelector(`[data-level="${levelNum}"]`);
     levelBtn.classList.add('burger-list__level_solved');
 
-    if (isGameFinished() && !isMessageShown) {
-      isMessageShown = true;
+    if (isGameFinished()) {
       onNextLevelAnimation();
       setTimeout(() => {
         complete();
@@ -53,7 +51,11 @@ const inputSelector = (selector) => {
       return;
     }
 
-    if (levels.length !== levelNum) {
+    const isLastLevel = levels.length === levelNum;
+    if (isLastLevel) {
+      onNextLevelAnimation();
+    }
+    else if (!isLastLevel) {
       currentLevelBorder(Number(localStorage.getItem('lastLevel')));
       localStorage.setItem('lastLevel', levelNum + 1);
       onNextLevelAnimation();
@@ -69,9 +71,10 @@ const inputSelector = (selector) => {
 };
 
 const highlightCSS = (e) => {
-  const placeHolder = e.target;
-  hljs.highlightBlock(placeHolder);
-  inputSelector(e.target.innerText);
+  const css = document.querySelector('.css');
+  const placeHolder = css.innerText;
+  hljs.highlightBlock(css);
+  inputSelector(placeHolder);
 };
 
 const cssEditorPlaceHolderClick = (e) => {
@@ -79,19 +82,6 @@ const cssEditorPlaceHolderClick = (e) => {
 
   if (placeHolder.innerText === 'Type selector here..') {
     placeHolder.innerText = '';
-  }
-};
-
-const enterSelector = (e) => {
-  const placeHolder = e.target;
-
-  if (e.key === 'Enter') {
-    highlightCSS(e);
-
-    const cssEditBlock = document.querySelector('.css_game-textarea');
-    cssEditBlock.removeEventListener('blur', highlightCSS);
-    placeHolder.blur();
-    cssEditBlock.addEventListener('blur', highlightCSS);
   }
 };
 
@@ -107,7 +97,6 @@ const configureEditors = () => {
   const cssEditBlock = document.querySelector('.css_game-textarea');
   cssEditBlock.addEventListener('click', cssEditorPlaceHolderClick);
   cssEditBlock.addEventListener('blur', highlightCSS);
-  cssEditBlock.addEventListener('keypress', enterSelector);
 };
 
 const levelsListeners = () => {
@@ -116,6 +105,20 @@ const levelsListeners = () => {
     lvl.addEventListener('click', levelOnClick);
   });
 };
+
+const enterOnPage = (e) => {
+  const css = document.querySelector('.css');
+
+  if (e.key === 'Enter') {
+    const cssEditBlock = document.querySelector('.css_game-textarea');
+    cssEditBlock.removeEventListener('blur', highlightCSS);
+    css.blur();
+    cssEditBlock.addEventListener('blur', highlightCSS);
+    highlightCSS();
+  }
+};
+
+document.body.addEventListener('keypress', enterOnPage);
 
 export default function onload() {
   onloadView();

@@ -6,10 +6,6 @@ const levelOnClick = (e) => {
   localStorage.setItem('lastLevel', levelNum);
 
   onloadView('burger');
-
-  const htmlEditor = document.querySelector('.html');
-  hljs.highlightBlock(htmlEditor);
-
   burgerOnClick();
 };
 

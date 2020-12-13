@@ -115,7 +115,7 @@
 
 .burger-list__level {
     font-size: 30px;
-    line-height: 38px;
+    line-height: 45px;
     padding-left: 77px;
     /* margin-bottom: 18px; */
     display: block;
@@ -206,11 +206,19 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
 }
 
 .img-card {
+    cursor: pointer;
     margin: 5px;
     padding: 5px;
+    max-width: 134px;
+}
+
+.img-card:hover {
+    background: beige;
+    border-radius: 10%;
 }
 
 .imgUnderline {
@@ -422,15 +430,21 @@
     line-height: 25px;
 }
 
+.highlightTag .hljs-string,
+.highlightTag .hljs-name,
+.highlightTag {
+    color: #214a97 !important;
+}
+
 .htmlElemOver {
     display: flex;
-    height: 25px;
     line-height: 25px;
     padding-left: 23px;
 }
 
 .htmlElemOver:hover,
-.htmlElemOver:hover > .hljs-tag > .hljs-name {
+.htmlElemOver:hover .hljs-string,
+.htmlElemOver:hover .hljs-name {
     color: #214a97;
     cursor: pointer;
 };

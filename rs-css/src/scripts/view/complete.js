@@ -1,5 +1,5 @@
 const complete = () => {
-//   document.querySelector('.burger-menu').click();
+    alert('Вы прошли игру');
 };
 
 export default complete;
