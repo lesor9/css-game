@@ -53,7 +53,7 @@ const initTaskImages = (level) => {
     img.classList.add('img-card');
     img.setAttribute('data-id', id);
 
-    if (level.level === 5) {
+    if (level.name === "*") {
       img.style.width = `${70 / (level.elements.length / 2)}%`;
     };
 

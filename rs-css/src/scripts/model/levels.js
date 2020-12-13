@@ -534,7 +534,7 @@ const levels = [
       img: 'storm',
     },
   ],
-  description: 'Choose all the clouds with lightning in addition to cloud with rain',
+  description: 'Choose all the clouds with lightning',
   target: [0, 1, 3, 4],
   hint: 'cloud:not(#rain)',
 },
