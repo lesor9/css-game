@@ -51,12 +51,7 @@ const initTaskImages = (level) => {
     img.alt = 'img';
     img.style.width = `${70 / level.elements.length}%`;
     img.classList.add('img-card');
-    img.setAttribute('data-tag', item);
     img.setAttribute('data-id', id);
-
-    if (level.level === 5) {
-      img.style.width = `${70 / (level.elements.length / 2)}%`;
-    };
 
     if (level.level === 5) {
       img.style.width = `${70 / (level.elements.length / 2)}%`;
@@ -139,7 +134,6 @@ const initHTMLCode = (level) => {
       let atrib = [];
       const attributesArray = Object.entries(item.attributes);
       attributesArray.forEach((atr) => {
-        // console.log(atr[1]);
         atrib.push(`${atr[0]} ="${atr[1].join(' ')}"`);
       });
       
@@ -174,8 +168,20 @@ const selectImageFromHTMLElement = (e) => {
   const imageIndex = findImage(e);
   const imagesField = document.querySelector('.imgContent').childNodes;
   const selectedImage = imagesField[imageIndex];
-
   selectedImage.classList.add('imageSelectedViaHTML');
+
+  const rect = selectedImage.getBoundingClientRect();
+  const fromTop = Math.round(rect.top);
+  const fromLeft = Math.round(rect.left);
+  
+  const popupHTML = document.createElement('div');
+  popupHTML.innerText = currentDiv.innerText;
+  popupHTML.classList.add('html-popup');
+  popupHTML.classList.add('html');
+  popupHTML.style.left = `${fromLeft + 30}px`;
+  popupHTML.style.top = `${fromTop - 50}px`;
+  hljs.highlightBlock(popupHTML);
+  document.body.appendChild(popupHTML);
 };
 
 const unSelect = () => {
@@ -183,6 +189,12 @@ const unSelect = () => {
   imagesField.forEach((image) => {
     image.classList.remove('imageSelectedViaHTML');
   });
+
+  const htmlSnippets = document.querySelectorAll('.html-popup');
+
+  htmlSnippets.forEach((popup) => {
+    popup.remove();
+  })
 };
 
 const divsWithElemsHTMLEditor = () => {
@@ -247,7 +259,7 @@ async function textTyping(e) {
 
   await asyncForEach(hint, async (elem) => {
     cssField.innerHTML += elem;
-    await new Promise((r) => setTimeout(r, 250));
+    await new Promise((r) => setTimeout(r, 150));
   });
 
   levelCompleteWithHint();
@@ -265,6 +277,19 @@ const highlightHTMLElem = (img) => {
   const tags = document.querySelectorAll('.htmlElemOver');
 
   tags[id].classList.add('highlightTag');
+  
+  const rect = img.getBoundingClientRect();
+  const fromTop = Math.round(rect.top);
+  const fromLeft = Math.round(rect.left);
+  
+  const popupHTML = document.createElement('div');
+  popupHTML.innerText = tags[id].innerText;
+  popupHTML.classList.add('html-popup');
+  popupHTML.classList.add('html');
+  popupHTML.style.left = `${fromLeft + 30}px`;
+  popupHTML.style.top = `${fromTop - 50}px`;
+  hljs.highlightBlock(popupHTML);
+  document.body.appendChild(popupHTML);
 };
 
 const resetHtmlTagsHighlightTag = () => {
@@ -272,6 +297,11 @@ const resetHtmlTagsHighlightTag = () => {
   tags.forEach((tag) => {
     tag.classList.remove('highlightTag');
   });
+
+  const htmlSnippets = document.querySelectorAll('.html-popup');
+  htmlSnippets.forEach((popup) => {
+    popup.remove();
+  })
 };
 
 const imgElemsListeners = () => {

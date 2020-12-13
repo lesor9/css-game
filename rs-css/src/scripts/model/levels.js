@@ -2,7 +2,7 @@ const levels = [
   // tag task
   {
     level: 1,
-    name: 'tag',
+    name: 'A',
     elements: [
       {
         name: 'wizard',
@@ -14,11 +14,51 @@ const levels = [
     description: 'Give power to the wizard to defeat the witch',
     target: [0],
     hint: 'wizard',
-  },
+},
+
+  // tag task
+{
+  level: 2,
+  name: 'B',
+  elements: [
+    {
+      name: 'deer',
+    },
+    {
+      name: 'fox',
+    },
+    {
+      name: 'crow',
+    },
+  ],
+  description: 'Choose a fox',
+  target: [1],
+  hint: 'fox',
+},
+
+ //combine
+ {
+  level: 3,
+  name: 'A, B',
+  elements: [
+    {
+      name: 'dragon'
+    },
+    {
+      name: 'castle'
+    },
+    {
+      name: 'phoenix',
+    },
+  ],
+  description: 'Scare these creatures away from the castle with people',
+  target: [0, 2],
+  hint: 'dragon, phoenix',
+},
 
   // class task
   {
-    level: 2,
+    level: 4,
     name: '.class',
     elements: [
       {
@@ -50,7 +90,7 @@ const levels = [
 
   //id task
   {
-    level: 3,
+    level: 5,
     name: '#id',
     elements: [
       {
@@ -77,28 +117,9 @@ const levels = [
     hint: '#cylo',
   },
 
- //combine
- {
-  level: 4,
-  name: 'tagA, tagB',
-  elements: [
-    {
-      name: 'dragon'
-    },
-    {
-      name: 'castle'
-    },
-    {
-      name: 'phoenix',
-    },
-  ],
-  description: 'Scare these creatures away from the castle with people',
-  target: [0, 2],
-  hint: 'dragon, phoenix',
-},
   //all
  {
-  level: 5,
+  level: 6,
   name: '*',
   elements: [
     {
@@ -149,10 +170,35 @@ const levels = [
   hint: '*',
 },
 
+//[atr]
+{
+  level: 7,
+  name: '[atrib]',
+  elements: [
+    {
+      name: 'snail',
+    },
+    {
+      name: 'rabbit',
+      attributes: {
+        hungry: ['true'],
+      }
+    },
+    {
+      name: 'horse', 
+      attributes: {
+        hungry: ['true'],
+      },
+    },
+  ],
+  description: 'Choose a hungry animals',
+  target: [1, 2],
+  hint: '[hungry="true"]',
+},
 
- //[atr]
+ //tag[atr]
  {
-  level: 6,
+  level: 8,
   name: 'tag[atrib]',
   elements: [
     {
@@ -178,7 +224,7 @@ const levels = [
 
  //[atr=""]
  {
-  level: 7,
+  level: 9,
   name: 'tag[atrib="val"]',
   elements: [
     {
@@ -209,7 +255,7 @@ const levels = [
 
  //:first-child
  {
-  level: 8,
+  level: 10,
   name: ':first-child',
   elements: [
     {
@@ -235,7 +281,7 @@ const levels = [
 
  //:last-child
  {
-  level: 9,
+  level: 11,
   name: ':last-child',
   elements: [
     {
@@ -261,7 +307,7 @@ const levels = [
 
  //:nth-child(n)
  {
-  level: 10,
+  level: 12,
   name: ':nth-child(n)',
   elements: [
     {
@@ -280,6 +326,217 @@ const levels = [
   description: 'Choose a second vampire',
   target: [2],
   hint: 'vampire:nth-child(3)',
+},
+
+ //:first-of-type
+ {
+  level: 13,
+  name: ':first-of-type',
+  elements: [
+    {
+      name: 'mermaid',
+    },
+    {
+      name: 'tower',
+    },
+    {
+      name: 'scarecrow',
+    },
+    { 
+      name: 'tower',
+    },
+  ],
+  description: 'Select the first tower',
+  target: [1],
+  hint: 'tower:first-of-type',
+},
+
+ //:last-of-type
+ {
+  level: 14,
+  name: ':last-of-type',
+  elements: [
+    {
+      name: 'orange',
+    },
+    {
+      name: 'lemon',
+    },
+    {
+      name: 'watermelon',
+    },
+    {
+      name: 'lemon',
+    },
+    {
+      name: 'lemon',
+    },
+    {
+      name: 'orange',
+    },
+  ],
+  description: 'Choose the last lemon',
+  target: [4],
+  hint: 'lemon:last-of-type',
+},
+
+//:nth-of-type(n)
+{
+  level: 15,
+  name: ':nth-of-type(n)',
+  elements: [
+    {
+      name: 'gnome',
+    },
+    {
+      name: 'excalibur',
+    },
+    {
+      name: 'gnome',
+    },
+    { 
+      name: 'cauldron',
+    },
+  ],
+  description: 'Select the second gnome',
+  target: [2],
+  hint: 'gnome:nth-of-type(2)',
+},
+
+//:nth-of-type(n+1)
+{
+  level: 16,
+  name: ':nth-of-type(n+1)',
+  elements: [
+    {
+      name: 'orange',
+    },
+    {
+      name: 'orange',
+    },
+    {
+      name: 'orange',
+    },
+    { 
+      name: 'orange',
+    },
+    { 
+      name: 'orange',
+    },
+  ],
+  description: 'Choose the odd fruits',
+  target: [0, 2, 4, 6, 8],
+  hint: 'orange:nth-of-type(2n+1)',
+},
+
+//:nth-last-of-type(n)
+{
+  level: 17,
+  name: ':nth-last-of-type(n+1)',
+  elements: [
+    {
+      name: 'pear',
+    },
+    {
+      name: 'pear',
+    },
+    {
+      name: 'pear',
+    },
+    { 
+      name: 'pear',
+    },
+    { 
+      name: 'pear',
+    },
+    { 
+      name: 'pear',
+    },
+  ],
+  description: 'Choose the odd pears from the end',
+  target: [1, 3, 5],
+  hint: 'pear:nth-last-of-type(2n+1)',
+},
+
+//:nth-last-of-type(n)
+{
+  level: 18,
+  name: ':nth-last-of-type(n)',
+  elements: [
+    {
+      name: 'mad-hatter',
+    },
+    {
+      name: 'tower',
+    },
+    {
+      name: 'lion',
+    },
+    { 
+      name: 'crystal-ball',
+    },
+  ],
+  description: 'Select the first tower',
+  target: [1],
+  hint: 'tower:first-of-type',
+},
+
+//:nth-last-child(n)
+{
+  level: 19,
+  name: ':nth-last-child(n)',
+  elements: [
+    {
+      name: 'glass-shoes',
+    },
+    {
+      name: 'poison',
+    },
+    {
+      name: 'poisonous',
+    },
+    { 
+      name: 'crystal-ball',
+    },
+  ],
+  description: 'Select the poison',
+  target: [1],
+  hint: 'poison:nth-last-child(3)',
+},
+
+
+//:not()
+{
+  level: 20,
+  name: ':not()',
+  elements: [
+    {
+      name: 'cloud',
+      img: 'storm',
+    },
+    {
+      name: 'cloud',
+      img: 'storm',
+    },
+    {
+      name: 'cloud',
+      img: 'rainy',
+      attributes: {
+        id: ['rain'],
+      }
+    },
+    { 
+      name: 'cloud',
+      img: 'storm',
+    },
+    { 
+      name: 'cloud',
+      img: 'storm',
+    },
+  ],
+  description: 'Choose all the clouds with lightning in addition to cloud with rain',
+  target: [0, 1, 3, 4],
+  hint: 'cloud:not(#rain)',
 },
 ];
 
