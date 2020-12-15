@@ -125,6 +125,10 @@ body ::-webkit-scrollbar-thumb {
     max-height: 100vh;
 }
 
+.burger-open {
+    overflow: hidden;
+}
+
 .burger-open .burger-list {
     right: 0px;
 }

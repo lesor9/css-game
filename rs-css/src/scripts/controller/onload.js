@@ -5,7 +5,6 @@ import checkSelector from './checkSelector';
 import complete from '../view/complete';
 import levels from '../model/levels';
 
-
 const currentLevelBorder = (lvlNum) => {
   const currentLevel = document.querySelector(`[data-level="${lvlNum}"]`);
   currentLevel.classList.toggle('burger-list__level-current_task');
@@ -24,6 +23,12 @@ const isGameFinished = () => {
 
   if (nonSolved) return false;
   return true;
+};
+
+const focusCSS = () => {
+  const css = document.querySelector('.css');
+  css.click();
+  css.focus();
 };
 
 const inputSelector = (selector) => {
@@ -52,10 +57,8 @@ const inputSelector = (selector) => {
     }
 
     const isLastLevel = levels.length === levelNum;
+    onNextLevelAnimation();
     if (isLastLevel) {
-      onNextLevelAnimation();
-    }
-    else if (!isLastLevel) {
       currentLevelBorder(Number(localStorage.getItem('lastLevel')));
       localStorage.setItem('lastLevel', levelNum + 1);
       onNextLevelAnimation();
@@ -67,10 +70,11 @@ const inputSelector = (selector) => {
     }
   } else {
     makeBorders();
+    focusCSS();
   }
 };
 
-const highlightCSS = (e) => {
+const highlightCSS = () => {
   const css = document.querySelector('.css');
   const placeHolder = css.innerText;
   hljs.highlightBlock(css);

@@ -47,15 +47,15 @@ const initTaskImages = (level) => {
     } else {
       img.src = `./assets/images/fairy_tale/${item.name}.png`;
     }
-    
+
     img.alt = 'img';
     img.style.width = `${70 / level.elements.length}%`;
     img.classList.add('img-card');
     img.setAttribute('data-id', id);
 
-    if (level.name === "*") {
+    if (level.name === '*') {
       img.style.width = `${70 / (level.elements.length / 2)}%`;
-    };
+    }
 
     if (level.target.indexOf(id) !== -1) img.classList.add('target');
 
@@ -106,7 +106,7 @@ const initPseudoCode = (level) => {
       const attributesArray = Object.entries(item.attributes);
       attributesArray.forEach((atr) => {
         elem.setAttribute(atr[0], atr[1].join(' '));
-      }); 
+      });
     }
     pseudoCode.appendChild(elem);
   });
@@ -131,12 +131,12 @@ const initHTMLCode = (level) => {
 
   level.elements.forEach((item) => {
     if (item.attributes) {
-      let atrib = [];
+      const atrib = [];
       const attributesArray = Object.entries(item.attributes);
       attributesArray.forEach((atr) => {
         atrib.push(`${atr[0]} ="${atr[1].join(' ')}"`);
       });
-      
+
       htmlEditor.innerText += `<${item.name} ${atrib.join(' ')}>`;
     } else {
       htmlEditor.innerText += `<${item.name}>`;
@@ -173,7 +173,7 @@ const selectImageFromHTMLElement = (e) => {
   const rect = selectedImage.getBoundingClientRect();
   const fromTop = Math.round(rect.top);
   const fromLeft = Math.round(rect.left);
-  
+
   const popupHTML = document.createElement('div');
   popupHTML.innerText = currentDiv.innerText;
   popupHTML.classList.add('html-popup');
@@ -194,7 +194,7 @@ const unSelect = () => {
 
   htmlSnippets.forEach((popup) => {
     popup.remove();
-  })
+  });
 };
 
 const divsWithElemsHTMLEditor = () => {
@@ -240,7 +240,7 @@ const levelCompleteWithHint = () => {
 };
 
 async function asyncForEach(array, callback) {
-  for (let index = 0; index < array.length; index++) {
+  for (let index = 0; index < array.length; index += 1) {
     await callback(array[index], index, array);
   }
 }
@@ -249,8 +249,8 @@ let isTyping = false;
 async function textTyping(e) {
   e.preventDefault();
   if (isTyping) return;
-  let lastLevel = localStorage.getItem('lastLevel');
-  let hint = levels[lastLevel - 1].hint;
+  const lastLevel = localStorage.getItem('lastLevel');
+  let { hint } = levels[lastLevel - 1];
   isTyping = true;
   const hintBtn = document.querySelector('.css_game-hint');
   hint = hint.split('');
@@ -277,11 +277,11 @@ const highlightHTMLElem = (img) => {
   const tags = document.querySelectorAll('.htmlElemOver');
 
   tags[id].classList.add('highlightTag');
-  
+
   const rect = img.getBoundingClientRect();
   const fromTop = Math.round(rect.top);
   const fromLeft = Math.round(rect.left);
-  
+
   const popupHTML = document.createElement('div');
   popupHTML.innerText = tags[id].innerText;
   popupHTML.classList.add('html-popup');
@@ -301,7 +301,7 @@ const resetHtmlTagsHighlightTag = () => {
   const htmlSnippets = document.querySelectorAll('.html-popup');
   htmlSnippets.forEach((popup) => {
     popup.remove();
-  })
+  });
 };
 
 const imgElemsListeners = () => {
