@@ -5,11 +5,11 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, './src/scripts/index.js'),
+        main: path.resolve(__dirname, './rs-css/src/scripts/index.js'),
     },
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, './rs-css/dist'),
     },
     module: {
         rules: [
@@ -32,16 +32,16 @@ module.exports = {
     plugins: [
         new CopyPlugin({
             patterns: [
-              { from: "./src/assets/images", to: "assets/images" },
+              { from: "./rs-css/src/assets/images", to: "assets/images" },
             ],
         }),     
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, './src/index.html'),
+            template: path.resolve(__dirname, './rs-css/src/index.html'),
         }),
-        // new CleanWebpackPlugin(),
+        new CleanWebpackPlugin(),
     ],
-    watch: true,
-    watchOptions: {
-        ignored: /node_modules/
-    },
+    // watch: true,
+    // watchOptions: {
+    //     ignored: /node_modules/
+    // },
 }
