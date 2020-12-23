@@ -4,8 +4,8 @@
   "description": "Private repository for @lesor9",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./src/scripts",
-    "lint:fix": "eslint ./src/scripts --fix",
+    "lint": "eslint ./rs-css/src/scripts",
+    "lint:fix": "eslint ./rs-css/src/scripts --fix",
     "bundle": "./node_modules/.bin/webpack"
   },
   "repository": {
